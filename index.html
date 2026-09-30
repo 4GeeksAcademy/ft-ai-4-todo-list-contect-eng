@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="todo-panel">
+        <header class="panel-header">
+          <div>
+            <p class="eyebrow">Productivity</p>
+            <h1>My Tasks</h1>
+          </div>
+          <div class="stats" aria-live="polite">
+            <span id="task-count">0 tasks</span>
+          </div>
+        </header>
+
+        <form id="todo-form" class="todo-form">
+          <div class="task-field-group">
+            <label class="sr-only" for="task-input">Add a new task</label>
+            <input
+              id="task-input"
+              name="task"
+              type="text"
+              placeholder="Add a new task..."
+              maxlength="120"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="meta-field-group">
+            <label class="sr-only" for="priority-select">Priority</label>
+            <select id="priority-select" name="priority">
+              <option value="low">Low priority</option>
+              <option value="medium" selected>Medium priority</option>
+              <option value="high">High priority</option>
+            </select>
+          </div>
+
+          <div class="meta-field-group">
+            <label class="sr-only" for="reminder-input">Reminder</label>
+            <input id="reminder-input" name="reminder" type="datetime-local" />
+          </div>
+
+          <button type="submit">Add</button>
+        </form>
+
+        <div class="toolbar" aria-label="Task filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="active" type="button">Active</button>
+          <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <label class="todo-check">
+          <input type="checkbox" class="todo-checkbox" />
+          <span class="todo-text"></span>
+        </label>
+        <button class="delete-btn" type="button" aria-label="Delete task">Delete</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
